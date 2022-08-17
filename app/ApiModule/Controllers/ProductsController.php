@@ -67,21 +67,23 @@ class ProductsController extends BaseV1Controller
         }
     }
 
-    private function getProductsData(string $apiHash): string
+    private function getProductsData(?string $apiHash): string
     {
         $data = [];
-        $marketId = $this->connection->query("SELECT id FROM markets WHERE api_hash = %s", $apiHash)->fetchField();
-        if ($marketId) {
-            $marketProducts = $this->connection->query("SELECT * FROM market_products WHERE market_id = %i", $marketId);
-            if ($marketProducts) {
-                foreach ($marketProducts as $marketProduct) {
-                    $data[$marketProduct->number] = [
-                        "name" => $marketProduct->name,
-                        "created_at" => $marketProduct->created_at,
-                        "price_without_vat" => $marketProduct->price_without_vat,
-                        "price_with_vat" => $marketProduct->price_with_vat,
-                        "vat" => $marketProduct->vat,
-                    ];
+        if ($apiHash !== null) {
+            $marketId = $this->connection->query("SELECT id FROM markets WHERE api_hash = %s", $apiHash)->fetchField();
+            if ($marketId) {
+                $marketProducts = $this->connection->query("SELECT * FROM market_products WHERE market_id = %i", $marketId);
+                if (count($marketProducts) > 0) {
+                    foreach ($marketProducts as $marketProduct) {
+                        $data[$marketProduct->number] = [
+                            "name" => $marketProduct->name,
+                            "created_at" => $marketProduct->created_at,
+                            "price_without_vat" => $marketProduct->price_without_vat,
+                            "price_with_vat" => $marketProduct->price_with_vat,
+                            "vat" => $marketProduct->vat,
+                        ];
+                    }
                 }
             }
         }
@@ -89,18 +91,20 @@ class ProductsController extends BaseV1Controller
         return Json::encode($data);
     }
 
-    private function getProductsStock(string $apiHash): string
+    private function getProductsStock(?string $apiHash): string
     {
         $data = [];
-        $marketId = $this->connection->query("SELECT id FROM markets WHERE api_hash = %s", $apiHash)->fetchField();
-        if ($marketId) {
-            $marketProducts = $this->connection->query("SELECT * FROM market_products WHERE market_id = %i", $marketId);
-            if ($marketProducts) {
-                foreach ($marketProducts as $marketProduct) {
-                    $quantity = $this->connection->query("SELECT quantity FROM stock_items WHERE id = %i", $marketProduct->stock_item_id)->fetchField();
-                    $data[$marketProduct->number] = [
-                        "quantity" => $quantity,
-                    ];
+        if ($apiHash !== null) {
+            $marketId = $this->connection->query("SELECT id FROM markets WHERE api_hash = %s", $apiHash)->fetchField();
+            if ($marketId) {
+                $marketProducts = $this->connection->query("SELECT * FROM market_products WHERE market_id = %i", $marketId);
+                if (count($marketProducts) > 0) {
+                    foreach ($marketProducts as $marketProduct) {
+                        $quantity = $this->connection->query("SELECT quantity FROM stock_items WHERE id = %i", $marketProduct->stock_item_id)->fetchField();
+                        $data[$marketProduct->number] = [
+                            "quantity" => $quantity,
+                        ];
+                    }
                 }
             }
         }

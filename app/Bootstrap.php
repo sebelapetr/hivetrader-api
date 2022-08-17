@@ -31,7 +31,7 @@ class Bootstrap
 
         if (
             (!isset($_SERVER["SESSIONNAME"]) || $_SERVER["SESSIONNAME"] !== "Console") &&
-            (!isset($_SERVER["SCRIPT_NAME"]) || $_SERVER["SCRIPT_NAME"] !== "/home/mater/cmd.php")
+            (!isset($_SERVER["SCRIPT_NAME"]) || $_SERVER["SCRIPT_NAME"] !== "/home/api/cmd.php")
         ) {
             $configurator->addConfig($appDir . '/app/config/apitte.neon');
         } else {

@@ -53,6 +53,7 @@ deployer:
 				- /www/fonts/*
 				- /www/js/*
 				- tunnel.bat
+				- /www/module/*
 
 				#- /vendor/composer/tmp*
 				- /vendor
