@@ -97,8 +97,9 @@ class ProductsController extends BaseV1Controller
             $marketProducts = $this->connection->query("SELECT * FROM market_products WHERE market_id = %i", $marketId);
             if ($marketProducts) {
                 foreach ($marketProducts as $marketProduct) {
+                    $quantity = $this->connection->query("SELECT quantity FROM stock_items WHERE id = %i", $marketProduct->stock_item_id)->fetchField();
                     $data[$marketProduct->number] = [
-                        "quantity" => 5,
+                        "quantity" => $quantity,
                     ];
                 }
             }
