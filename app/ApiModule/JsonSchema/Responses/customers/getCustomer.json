@@ -1,0 +1,117 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Get customer (response from CIS)",
+  "required": [
+    "status",
+    "code",
+    "data"
+  ],
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "id",
+        "cisId",
+        "email",
+        "name",
+        "surname",
+        "phone",
+        "branch",
+        "street",
+        "city",
+        "zip",
+        "emailNotifications",
+        "phoneNotifications",
+        "companyIco"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "ID in Skori web db"
+        },
+        "cisId": {
+          "type": "integer",
+          "description": "ID in CIS db"
+        },
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "JI",
+            "HK"
+          ]
+        },
+        "street": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zip": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "emailNotifications": {
+          "type": "boolean"
+        },
+        "phoneNotifications": {
+          "type": "boolean"
+        },
+        "companyIco": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "frozen": {
+          "type": "boolean"
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "registrated": {
+          "type": ["string", "null"],
+          "description": "format YYYY-MM-DD HH:mm:ss"
+        },
+        "lastLogin": {
+          "type": ["string", "null"],
+          "description": "format YYYY-MM-DD HH:mm:ss"
+        },
+        "gdprAgreementAt": {
+          "type": "string",
+          "description": "format YYYY-MM-DD HH:mm:ss"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+console:
+    name: Console
+    version: '1.0'
+    lazy: false
+
+services:
+    consoleLogger: App\Model\Services\ConsoleLogger\ConsoleLoggerService
+    #erp.inquiryImporter: App\Model\Erp\Importer\InquiryImporter(@erp.pohodaXml)
+    # COMMANDS
+    - App\Console\TestCommand
+    - App\Console\DeployCommand

@@ -1,0 +1,26 @@
+{
+  "name": "Petr Šebela",
+  "email": "petr.sebela@bepositive.cz",
+  "phone": "+420605200686",
+  "street": "Zvonařka 14",
+  "city": "Brno",
+  "zip": "67906",
+  "companyName": "Bepositive s.r.o",
+  "ic": "01746944",
+  "dic": "CZ01746944",
+  "invoicingStreet": "Zvonařka 14",
+  "invoicingCity": "Brno",
+  "invoicingZip": "67906",
+  "totalPriceWithTax": 1000,
+  "paymentMethod": "CASH_ON_DELIVERY",
+  "paymentState": "PAID",
+  "branch": "JIHLAVA",
+  "createdAt": "2021-01-06 12:00:00",
+  "orderItems": {
+    "quantity": 1,
+    "priceWithoutTax": 100,
+    "priceWithTax": 121,
+    "tax": 21,
+    "description": "Hvězdná mapa"
+  }
+}

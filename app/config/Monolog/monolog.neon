@@ -1,0 +1,28 @@
+extensions:
+    monolog: Contributte\Monolog\DI\MonologExtension
+
+
+monolog:
+	channel:
+		default: # default channel is required
+			handlers:
+				-
+					type: Monolog\Handler\RotatingFileHandler
+					arguments:
+						- %appDir%/../log/info.log
+						- 30
+						- Monolog\Logger::INFO
+			processors:
+				-  Monolog\Processor\MemoryPeakUsageProcessor()
+				- Monolog\Processor\IntrospectionProcessor
+		info:
+			handlers:
+				- Monolog\Handler\RotatingFileHandler(%appDir%/../log/mono-info.log, 15, Monolog\Logger::INFO)
+		error:
+			handlers:
+				- Monolog\Handler\RotatingFileHandler(%appDir%/../log/mono-error.log, 15, Monolog\Logger::ERROR)
+	hook:
+		fromTracy: false # enabled by default, log through Tracy into Monolog
+		toTracy: false # enabled by default, log through Monolog into Tracy
+	manager:
+		enabled: true # disabled by default

@@ -1,0 +1,78 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Get orders for customer (response from CIS)",
+  "required": [
+    "customerId",
+    "order"
+  ],
+  "properties": {
+    "customerId": {
+      "type": "string",
+      "description": "ID in CIS db"
+    },
+    "order": {
+      "type": "object",
+      "required": [
+        "orderId",
+        "branchCode",
+        "items",
+        "specification",
+        "createdDate",
+        "deliveryDate"
+      ],
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "branchCode": {
+          "type": "string",
+          "enum": ["JI", "HK"]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "code",
+              "quantity",
+              "piecePriceWithVat",
+              "vat"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "pokladna_id"
+              },
+              "quantity": {
+                "type": "integer"
+              },
+              "piecePriceWithVat": {
+                "type": "string"
+              },
+              "vat": {
+                "type": "string",
+                "enum": [21,15,10]
+              }
+            }
+          }
+        },
+        "specification": {
+          "type": "string"
+        },
+        "createdDate": {
+          "type": "string",
+          "description": "format YYYY-MM-DD HH:mm:ss"
+        },
+        "deliveryDate": {
+          "type": ["string", "null"],
+          "description": "format YYYY-MM-DD HH:mm:ss"
+        },
+        "priceWithVat": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Update company in Skori web",
+  "required": [
+    "id"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "ID in Skori web db. This is identifier, it is updated according to it."
+    },
+    "ico": {
+      "type": ["string", "null"]
+    },
+    "branchCode": {
+      "type": "string",
+      "enum": ["JI", "HK"]
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "dic": {
+      "type": ["string", "null"]
+    },
+    "street": {
+      "type": ["string", "null"]
+    },
+    "city": {
+      "type": ["string", "null"]
+    },
+    "zip": {
+      "type": ["string", "null"]
+    },
+    "frozen": {
+      "type": "boolean"
+    }
+  }
+}

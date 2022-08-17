@@ -1,0 +1,13 @@
+{
+  "branch": "JIHLAVA",
+  "name": "Petr",
+  "surname": "Šebela",
+  "phone": "+420123123123",
+  "street": "Zvonařka 14",
+  "city": "Brno",
+  "zip": 60200,
+  "mailNotifications": true,
+  "phoneNotifications": true,
+  "deleted": false,
+  "frozen": false
+}

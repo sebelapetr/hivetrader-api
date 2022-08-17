@@ -1,0 +1,28 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Price update",
+  "required": [
+    "code"
+  ],
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "ji_price": {
+      "type": "string"
+    },
+    "ji_vat": {
+      "type": "integer",
+      "enum": [21,15,10]
+    },
+    "hk_price": {
+      "type": "string"
+    },
+    "hk_vat": {
+      "type": "integer",
+      "enum": [21,15,10]
+    }
+  }
+}

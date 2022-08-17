@@ -1,0 +1,1 @@
+ C:\xampp81\php\php.exe vendor/phpstan/phpstan/phpstan.phar analyse app

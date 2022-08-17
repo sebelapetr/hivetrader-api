@@ -1,0 +1,64 @@
+extensions:
+	deployer: Contributte\Deployer\DI\DeployerExtension
+
+parameters:
+	deploy:
+		protocol: %deployer.protocol%
+		user: %deployer.user%
+		password: %deployer.password%
+		scheme: %deployer.scheme%
+
+deployer:
+	config:
+		mode: deploy
+		logFile: %appDir%/../log/deployer/deployer.log
+		tempDir: %appDir%/../temp
+		colors: yes
+
+	# User specific variables
+	userdata:
+
+	# Plugins specification (see more in PLUGINS.md)
+	plugins:
+
+	# Web sections
+	sections:
+		operarius:
+			remote: %deploy.protocol%://%deploy.user%:%deploy.password%@%deploy.scheme%
+			local: %wwwDir%
+			testMode: false
+
+			allowdelete: true
+			passiveMode: true
+			preprocess: false
+			deployFile: deploy.ini
+
+			ignore:
+				# Common
+				- .git*
+				- .idea*
+				- composer.*
+				- .htaccess
+				- readme.md
+				- deploy.ini.tmp
+
+				# Application
+				- /_doc
+				- /app/config/local.neon
+				- /bin
+				- /db
+				- /log
+				- /temp
+				- /www/css/*
+				- /www/fonts/*
+				- /www/js/*
+				- tunnel.bat
+
+				#- /vendor/composer/tmp*
+				- /vendor
+
+			before:
+			after:
+
+			purge:
+				- temp/cache

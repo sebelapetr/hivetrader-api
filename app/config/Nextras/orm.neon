@@ -1,0 +1,12 @@
+extensions:
+    dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+    migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+    orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+
+orm:
+    model: App\Model\Orm
+
+migrations:
+	dir: %appDir%/../migrations
+	driver: mysql
+	dbal: nextras

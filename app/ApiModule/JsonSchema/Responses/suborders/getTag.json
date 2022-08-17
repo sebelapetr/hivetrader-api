@@ -1,0 +1,38 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Get customer (response from CIS)",
+  "required": [
+    "status",
+    "code",
+    "data"
+  ],
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "cisId",
+        "tagUrl"
+      ],
+      "properties": {
+        "cisId": {
+          "type": "integer",
+          "description": "ID in CIS db"
+        },
+        "tagUrl": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

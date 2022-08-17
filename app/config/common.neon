@@ -1,0 +1,23 @@
+parameters:
+
+extensions:
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+includes:
+    - Monolog/monolog.neon
+    - Console/console.neon
+    - Nextras/orm.neon
+    - Deployer/deployer.neon

@@ -1,0 +1,55 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Update customer in CIS",
+  "required": [
+    "cisId"
+  ],
+  "properties": {
+    "cisId": {
+      "type": "integer",
+      "description": "ID in CIS db. This is identifier, it is updated according to it."
+    },
+    "companyIco": {
+      "type": ["string", "null"]
+    },
+    "branch": {
+      "type": "string",
+      "enum": ["JI", "HK"]
+    },
+    "email": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "street": {
+      "type": ["string", "null"]
+    },
+    "city": {
+      "type": ["string", "null"]
+    },
+    "zip": {
+      "type": ["string", "null"]
+    },
+    "emailNotifications": {
+      "type": "boolean"
+    },
+    "phoneNotifications": {
+      "type": "boolean"
+    },
+    "frozen": {
+      "type": "boolean"
+    },
+    "deleted": {
+      "type": "boolean"
+    }
+  }
+}

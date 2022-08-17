@@ -1,0 +1,19 @@
+parameters:
+    connectors:
+        test:
+            username: ''
+            password: ''
+    deployer:
+        protocol: "" # ftp|ftps
+        user: ""
+        password: ""
+        scheme: ""
+
+dbal:
+	connectionTz: auto-offset
+	simpleStorageTz: "Europe/Prague"
+	driver: mysqli
+	host: localhost
+	database:
+	username:
+	password: ''

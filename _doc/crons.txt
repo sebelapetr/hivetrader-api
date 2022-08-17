@@ -1,0 +1,4 @@
+# NOVIKO COLLECTORS
+#0 4 * * * /usr/bin/php /home/operarius/cmd.php suppliers:collectors:noviko:products
+#20 6-23,0,1 * * * /usr/bin/php /home/operarius/cmd.php suppliers:collectors:noviko:stock
+#0 2 * * * /usr/bin/php /home/operarius/cmd.php suppliers:mothertemp:noviko:stock-changes

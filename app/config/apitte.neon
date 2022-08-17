@@ -1,0 +1,43 @@
+extensions:
+    api: Apitte\Core\DI\ApiExtension
+    middleware: Contributte\Middlewares\DI\MiddlewaresExtension
+
+services:
+    - Tracy\Bridges\Psr\TracyToPsrLoggerAdapter
+    decorator.response.simpleApiErrorDecorator:
+        class: App\Api\Decorator\SimpleApiErrorDecorator
+
+    # Controllers
+    - App\Api\V1\Controllers\TestController
+    - App\Api\V1\Controllers\ProductsController
+
+api:
+    debug: %debugMode%
+    catchException: true # Sets if exception should be catched and transformed into response or rethrown to output (debug only)
+    plugins:
+        Apitte\Middlewares\DI\MiddlewaresPlugin:
+        Apitte\Core\DI\Plugin\CoreMappingPlugin:
+        Apitte\Core\DI\Plugin\CoreDecoratorPlugin:
+
+middleware:
+    debug: %debugMode%
+    middlewares:
+        -
+            factory: Contributte\Middlewares\BasicAuthMiddleware
+            setup:
+                - addUser('TESTHASH', '$2y$10$d5LDdT5SzRC0MFXI.FCmweI3mji8CuTp0ouHfXxSTO9KERQuR.ysO') # password is Admin here
+        -
+            factory: Contributte\Middlewares\AutoBasePathMiddleware
+        tracy:
+            factory: Contributte\Middlewares\TracyMiddleware::factory(%debugMode%)
+        -
+            factory: Contributte\Middlewares\TryCatchMiddleware
+            setup:
+                - setCatchExceptions(true) # affect if exceptions are catched in debug mode (they are always catched in production mode)
+                - setDebugMode(%debugMode%)
+                - setLogger(@Tracy\Bridges\Psr\TracyToPsrLoggerAdapter, Psr\Log\LogLevel::ERROR) # Monolog and Tracy PSR3 adapter are good choice
+        -
+            factory: Apitte\Middlewares\ApiMiddleware # Run whole api application
+
+includes:
+    - Nextras/orm.neon
